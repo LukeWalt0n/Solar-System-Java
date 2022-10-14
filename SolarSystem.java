@@ -17,6 +17,15 @@ public class SolarSystem extends JFrame
 
 	private ArrayList<SolarObject> things = new ArrayList<SolarObject>();
 
+
+
+
+	public SolarSystem(){
+		
+	}
+
+
+
 	/**
 	 * Create a view of the Solar System.
 	 * Once an instance of the SolarSystem class is created,
