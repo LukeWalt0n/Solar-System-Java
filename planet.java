@@ -5,43 +5,41 @@
  */
 public class planet extends SolarSystem {
     
-        private double moveAmount;
-        private SolarSystem s;
-        private String name;
-        private double dist;
-        private double angle;
-        private double diameter;
-        private String colour;
-        private double centreOfRotationDist;
-        private double centreOfRotationAng;
-
-        public planet(){
-            super(WIDTH, HEIGHT);
-        }
-       
-        /*
-         * Constructor to get the other details about the planet and also gain access to its solar system
-         * @param 
-         */
-        public planet(SolarSystem ss, String n, double ma, double d, double a, double di, String c, double cord, double cora ){
-            super(WIDTH, HEIGHT);
-            this.s = ss;
-            this.name = n;
-            this.moveAmount = ma;
-            this.dist = d;
-            this.angle = a;
-            this.diameter = di;
-            this.colour = c;
-            this.centreOfRotationDist = cord;
-            this.centreOfRotationAng = cora;
-        }
+    private double moveAmount;
+    private SolarSystem s;
+    private String name;
+    private double dist;
+    private double angle;
+    private double diameter;
+    private String colour;
+    private double centreOfRotationDist;
+    private double centreOfRotationAng;
+    /*
+    * Constructor to get the other details about the planet and also gain access to its solar system
+    * @param 
+    */
+    public planet(SolarSystem ss, String n, double ma, double d, double a, double di, String c, double cord, double cora ){
+        super(WIDTH, HEIGHT);
+        this.s = ss;
+        this.name = n;
+        this.moveAmount = ma;
+        this.dist = d;
+        this.angle = a;
+        this.diameter = di;
+        this.colour = c;
+        this.centreOfRotationDist = cord;
+        this.centreOfRotationAng = cora;
+    }
         
         /*
          * Method to add a planet to the solar system.
          */
-        public void createPlanet(){
-            this.s.drawSolarObjectAbout(this.dist, this.angle, this.diameter, this.colour, this.centreOfRotationDist, this.centreOfRotationAng);
-        }
+        
+        public void createPlanet()
+        {
+            this.s.drawSolarObjectAbout(dist, angle, diameter, colour, centreOfRotationDist, centreOfRotationAng);
+        }      
+
 
         /*
          * A method which makes a planet orbit the sun.
@@ -57,13 +55,12 @@ public class planet extends SolarSystem {
                 s.drawSolarObject(0, 0 , 50, "YELLOW");
                 s.finishedDrawing();
             }while(true);
-           
-            
-            
-            
-            
+        
             
         }
+
+
+        
 
         
 }
