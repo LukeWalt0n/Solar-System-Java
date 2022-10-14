@@ -20,9 +20,12 @@ public class driver{
 
          
          //Draw the earth.
-         planet earth = new planet(s, "Earth", 5, 60, 20, 30, "BLUE", 40, 25);
+         planet earth = new planet(s, "Earth", 10, 60, 0, 30, "BLUE", 0, 0);
          earth.createPlanet();
 
-
+        do{
+            earth.orbit();
+            s.finishedDrawing();
+        }while(true);
     }
 }

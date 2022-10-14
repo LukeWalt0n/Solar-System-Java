@@ -20,9 +20,7 @@ public class SolarSystem extends JFrame
 
 
 
-	public SolarSystem(){
-		
-	}
+	
 
 
 

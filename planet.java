@@ -40,5 +40,24 @@ public class planet extends SolarSystem {
             this.s.drawSolarObjectAbout(this.dist, this.angle, this.diameter, this.colour, this.centreOfRotationDist, this.centreOfRotationAng);
         }
 
+        /*
+         * A method which makes a planet orbit the sun.
+         */
+        public void orbit(){
+            
+            this.angle += 5;
+            if(this.angle == 360){
+                this.angle =0;
+            }
+            createPlanet();
+            s.drawSolarObject(0, 0 , 50, "YELLOW");
+            s.finishedDrawing();
+            
+            
+            
+            
+            
+        }
+
         
 }
