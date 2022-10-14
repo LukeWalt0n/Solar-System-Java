@@ -15,6 +15,9 @@ public class planet extends SolarSystem {
         private double centreOfRotationDist;
         private double centreOfRotationAng;
 
+        public planet(){
+            super(WIDTH, HEIGHT);
+        }
        
         /*
          * Constructor to get the other details about the planet and also gain access to its solar system
@@ -45,13 +48,16 @@ public class planet extends SolarSystem {
          */
         public void orbit(){
             
-            this.angle += 5;
-            if(this.angle == 360){
-                this.angle =0;
-            }
-            createPlanet();
-            s.drawSolarObject(0, 0 , 50, "YELLOW");
-            s.finishedDrawing();
+            do{
+                this.angle += moveAmount;
+                if(this.angle == 360){
+                    this.angle =0;
+                }
+                createPlanet();
+                s.drawSolarObject(0, 0 , 50, "YELLOW");
+                s.finishedDrawing();
+            }while(true);
+           
             
             
             
