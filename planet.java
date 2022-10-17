@@ -19,7 +19,7 @@ public class planet extends SolarSystem {
     * @param 
     */
     public planet(SolarSystem ss, String n, double ma, double d, double a, double di, String c, double cord, double cora ){
-        super(WIDTH, HEIGHT);
+        super();
         this.s = ss;
         this.name = n;
         this.moveAmount = ma;
@@ -31,6 +31,14 @@ public class planet extends SolarSystem {
         this.centreOfRotationAng = cora;
     }
         
+
+
+        public double getOfRotationDist(){
+            return this.centreOfRotationDist;
+        }
+        public double getOfRotationAngle(){
+            return this.centreOfRotationAng;
+        }
         /*
          * Method to add a planet to the solar system.
          */
@@ -46,16 +54,13 @@ public class planet extends SolarSystem {
          */
         public void orbit(){
             
-            do{
                 this.angle += moveAmount;
                 if(this.angle == 360){
                     this.angle =0;
                 }
                 createPlanet();
-                s.drawSolarObject(0, 0 , 50, "YELLOW");
-                s.finishedDrawing();
-            }while(true);
-        
+                
+               
             
         }
 
