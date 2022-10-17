@@ -20,16 +20,19 @@ public class driver{
 
          
          //Draw the earth.
-         planet earth = new planet(s, "Earth", 10, 150, 0, 30, "BLUE", 0, 0);
+         planet earth = new planet(s, "Earth", 10, 200, 0, 30, "BLUE", 0, 0);
          earth.createPlanet();
          
-         planet mars = new planet(s, "Mars", 5, 230 , 40, 50, "ORANGE", 0, 0);
+         planet mars = new planet(s, "Mars", 5, 260 , 40, 40, "RED", 0, 0);
          mars.createPlanet();
+        
+         planet saturn = new planet(s, "Saturn", 3, 340, 0, 60, "ORANGE", 0, 0);
+         saturn.createPlanet();
 
-         moon m = new moon(s, "Moon", 2, 180, 0, 20, "WHITE", earth);
+         moon m = new moon(s, "Moon", 2, 230, 0, 20, "WHITE", earth);
         m.createMoon();
 
-        stars starz = new stars(100, s);
+        stars starz = new stars(300, s);
         starz.drawStars();
          
 
@@ -37,9 +40,10 @@ public class driver{
             earth.orbit();
             mars.orbit();
             m.orbitMoon();
-            starz.drawStars();
+            saturn.orbit();
             s.drawSolarObject(0, 0, 100, "YELLOW");
             s.finishedDrawing();
+            starz.drawStars();
         }while(true);
 
         

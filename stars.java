@@ -15,11 +15,18 @@ public class stars {
     }
 
 
+    /*
+     * Method to draw the stars to the screen.
+     * Uses a for loop to draw 'x' amount of stars giving them a random angle and distance each time.
+     */
     public void drawStars(){
         Random r = new Random();
-        int x = 0;
-        for(int i =0; i < this.amount; i++)
-            this.s.drawSolarObject(x, x+10,20, "WHITE");
-            x += 10;
+        
+        for(int i =0; i < this.amount; i++){
+            System.out.println("HELLO" + i);
+            this.s.drawSolarObject(r.nextInt(400), r.nextInt(360),r.nextInt(8), "WHITE");
+        }
+       
+           
     }
 }
