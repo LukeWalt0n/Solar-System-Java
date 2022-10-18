@@ -53,7 +53,8 @@ public class planet extends SolarSystem {
          * A method which makes a planet orbit the sun.
          */
         public void orbit(){
-            
+
+            //Use move amount for scalability.
                 this.angle += moveAmount;
                 if(this.angle == 360){
                     this.angle =0;
