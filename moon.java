@@ -10,10 +10,13 @@ public class moon extends SolarSystem {
     private double angle;
     private double diameter;
     private String colour;
+    private double centreOfRotationAng;
+    //How far away the moon is from the earth or the planet.
+    private double centreOfRotationDist;
     
     private planet p; //Take a planet so we know what we're orbiting.
 
-    public moon(SolarSystem ss, String n, double ma, double d, double a, double di, String c, planet e){
+    public moon(SolarSystem ss, double ma, double d, double a, double di, String c, planet e, double cord, double cora){
         super();
         this.s = ss;
         this.moveAmount = ma;
@@ -22,21 +25,27 @@ public class moon extends SolarSystem {
         this.diameter = di;
         this.colour = c;
         this.p = e;
+        this.centreOfRotationAng = cora;
+        this.centreOfRotationDist =cord;
+        
+
     }
 
-    /*
-     * Invoke super class method to draw the moon onto the screen.
-     */
+    
     public void createMoon(){
-        this.s.drawSolarObjectAbout(dist, angle, diameter, colour, this.p.getOfRotationDist()+5, this.p.getOfRotationAngle()+5);
+        this.s.drawSolarObjectAbout(this.dist, this.angle, this.diameter, this.colour, this.centreOfRotationDist, this.centreOfRotationAng);
     }
 
     public void orbitMoon(){
         
             
             //How can we make the moon orbit the earth.
+
+            //Centre of rotation angle is the angle angle to the sun so should be the same as the earth.
+            this.centreOfRotationAng += p.getMoveAmount();
             this.angle += moveAmount;
-            if(this.angle == 360){
+
+            if(this.angle >= 360){
                 this.angle =0;
             }
             createMoon();

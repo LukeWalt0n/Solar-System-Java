@@ -18,29 +18,30 @@ public class driver{
          //Draw a sun in the window:
          
 
-         planet mercury = new planet(s, "Mercury", 14, 150, 360, 20, "GREEN", 0, 0);
+         planet mercury = new planet(s, 2, 150, 360, 20, "GREY");
          mercury.createPlanet();
 
-         planet venus = new planet(s, "venus", 12, 170, 48, 25, "CYAN", 0, 0);
+         planet venus = new planet(s, 2, 170, 48, 25, "ORANGE");
          venus.createPlanet();
          //Draw the earth.
-         planet earth = new planet(s, "Earth", 10, 200, 80, 30, "BLUE", 0, 0);
+         planet earth = new planet(s,  2, 200, 0, 30, "BLUE");
          earth.createPlanet();
          
-         planet mars = new planet(s, "Mars", 8, 260 , 40, 40, "RED", 0, 0);
+         planet mars = new planet(s,  2, 260 , 40, 40, "RED");
          mars.createPlanet();
         
-         planet jupiter = new planet(s, "Jupiter", 6, 280, 60, 50, "CYAN", 0, 0);
+         planet jupiter = new planet(s, 2, 280, 60, 50, "YELLOW");
          jupiter.createPlanet();
 
-         planet saturn = new planet(s, "Saturn", 4, 340, 30, 60, "ORANGE", 0, 0);
+         planet saturn = new planet(s, 2, 340, 30, 60, "ORANGE");
          saturn.createPlanet();
 
-         planet uranus = new planet(s, "uranus", 6, 380, 20, 20, "BLUE", 0, 0);
+         planet uranus = new planet(s,  2, 380, 20, 20, "BLUE");
          uranus.createPlanet();
 
-         moon m = new moon(s, "Moon", 2, 230, 0, 20, "WHITE", earth);
-        m.createMoon();
+         //Move amount is what we 
+         moon m = new moon(s, 3, 50, 0, 10, "WHITE", earth, 200, 0 );
+         m.createMoon();
 
         stars starz = new stars(300, s);
         starz.drawStars();

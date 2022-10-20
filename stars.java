@@ -23,7 +23,6 @@ public class stars {
         Random r = new Random();
         
         for(int i =0; i < this.amount; i++){
-            System.out.println("HELLO" + i);
             this.s.drawSolarObject(r.nextInt(400), r.nextInt(360),r.nextInt(8), "WHITE");
         }
        

@@ -12,40 +12,42 @@ public class planet extends SolarSystem {
     private double angle;
     private double diameter;
     private String colour;
-    private double centreOfRotationDist;
-    private double centreOfRotationAng;
+    
     /*
     * Constructor to get the other details about the planet and also gain access to its solar system
     * @param 
     */
-    public planet(SolarSystem ss, String n, double ma, double d, double a, double di, String c, double cord, double cora ){
+    public planet(SolarSystem ss,  double ma, double d, double a, double di, String c ){
         super();
         this.s = ss;
-        this.name = n;
         this.moveAmount = ma;
         this.dist = d;
         this.angle = a;
         this.diameter = di;
         this.colour = c;
-        this.centreOfRotationDist = cord;
-        this.centreOfRotationAng = cora;
+        
     }
         
 
 
-        public double getOfRotationDist(){
-            return this.centreOfRotationDist;
+       
+        
+        public double getDistanceFromSun(){
+            return this.dist;
         }
-        public double getOfRotationAngle(){
-            return this.centreOfRotationAng;
+
+        public double getAngleFromSun(){
+            return this.angle;
         }
-        /*
-         * Method to add a planet to the solar system.
-         */
+
+        public double getMoveAmount(){
+            return this.moveAmount;
+        }
+
         
         public void createPlanet()
         {
-            this.s.drawSolarObjectAbout(dist, angle, diameter, colour, centreOfRotationDist, centreOfRotationAng);
+            this.s.drawSolarObject(dist, angle, diameter, colour);
         }      
 
 
