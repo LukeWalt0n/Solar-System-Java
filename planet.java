@@ -1,74 +1,50 @@
 /*
- * A class to represent planets.
- * Will contain a move method.
- * Planet extends solar system as they share the same variables so we may aswell use them.
+ * Class to represent a planet.
+ * A planet is a circle on the screen which can orbit another object.
  */
-public class planet extends SolarSystem {
+public  class Planet extends CelestialObject {
     
-    private double moveAmount;
     private SolarSystem s;
-    private String name;
-    private double dist;
-    private double angle;
-    private double diameter;
-    private String colour;
+    private double orbitSpeed;
+    private double tempAngle;
+
+    public Planet(double d, double a, double di, String c, double ma, SolarSystem ss){
+        super(d, a, di, c);
+        this.orbitSpeed = ma;
+        this.s = ss;
+    }
+
+    /*
+     * Method to return the orbit speed of the planet.
+     * This is so the moon class can use this value to match the speed of the planet when orbiting the sun.
+     */
+    public double getOrbitSpeed(){
+        return this.orbitSpeed;
+    }
     
     /*
-    * Constructor to get the other details about the planet and also gain access to its solar system
-    * @param 
-    */
-    public planet(SolarSystem ss,  double ma, double d, double a, double di, String c ){
-        super();
-        this.s = ss;
-        this.moveAmount = ma;
-        this.dist = d;
-        this.angle = a;
-        this.diameter = di;
-        this.colour = c;
-        
+     * Calls to solarSystem method to draw an object to the screen.
+     */
+    public void createPlanet()
+    {
+            this.s.drawSolarObject(this.getDist(), this.getAngle(), 
+            this.getDiameter(), this.getColour());
     }
-        
 
 
-       
-        
-        public double getDistanceFromSun(){
-            return this.dist;
+    /*
+     * Override of celestialObject method 'orbit'
+     * In this case we just increase the planets angle to the sun on each call of this method.
+     */
+    @Override
+    public void orbit()
+    {
+        //Increase the angle by orbitSpeed.
+        tempAngle = this.getAngle() + orbitSpeed;
+        this.setAngle(tempAngle);
+        if(this.getAngle() >= 360){
+            this.setAngle(0);
         }
-
-        public double getAngleFromSun(){
-            return this.angle;
-        }
-
-        public double getMoveAmount(){
-            return this.moveAmount;
-        }
-
-        
-        public void createPlanet()
-        {
-            this.s.drawSolarObject(dist, angle, diameter, colour);
-        }      
-
-
-        /*
-         * A method which makes a planet orbit the sun.
-         */
-        public void orbit(){
-
-            //Use move amount for scalability.
-                this.angle += moveAmount;
-                if(this.angle == 360){
-                    this.angle =0;
-                }
-                createPlanet();
-                
-               
-            
-        }
-
-
-        
-
-        
+        createPlanet();
+    }
 }
