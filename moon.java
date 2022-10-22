@@ -1,54 +1,54 @@
 
 /*
- * A class which represents moons.
+ * A class which represents a moon orbiting a planet.
  * 
  */
-public class moon extends SolarSystem {
-    private double moveAmount;
+
+public class Moon extends CelestialObject {
+
+    /*
+     * We use centre of rotation angle and distance to make the moon orbit the earth.
+     */
     private SolarSystem s;
-    private double dist;
-    private double angle;
-    private double diameter;
-    private String colour;
-    private double centreOfRotationAng;
-    //How far away the moon is from the earth or the planet.
+    private double orbitSpeed;
+    private double tempAngle;
     private double centreOfRotationDist;
-    
-    private planet p; //Take a planet so we know what we're orbiting.
+    private double centreOfRotationAngle;
+    private Planet plan;
 
-    public moon(SolarSystem ss, double ma, double d, double a, double di, String c, planet e, double cord, double cora){
-        super();
+
+    public Moon(Planet p, double d, double a, double di, String c, double ma, SolarSystem ss, double cord, double cora){
+        //Call to parent class celestialObject.
+        super(d, a, di, c);
+        this.orbitSpeed = ma;
         this.s = ss;
-        this.moveAmount = ma;
-        this.dist = d;
-        this.angle = a;
-        this.diameter = di;
-        this.colour = c;
-        this.p = e;
-        this.centreOfRotationAng = cora;
-        this.centreOfRotationDist =cord;
-        
-
+        this.centreOfRotationDist = cord;
+        this.centreOfRotationAngle = cora;
+        this.plan = p;
     }
 
-    
     public void createMoon(){
-        this.s.drawSolarObjectAbout(this.dist, this.angle, this.diameter, this.colour, this.centreOfRotationDist, this.centreOfRotationAng);
+        //Calls solar system method to draw a moon about a planet.
+        this.s.drawSolarObjectAbout(this.getDist(), this.getAngle(), 
+            this.getDiameter(), this.getColour(), this.centreOfRotationDist, this.centreOfRotationAngle );
     }
 
-    public void orbitMoon(){
-        
-            
-            //How can we make the moon orbit the earth.
-
-            //Centre of rotation angle is the angle angle to the sun so should be the same as the earth.
-            this.centreOfRotationAng += p.getMoveAmount();
-            this.angle += moveAmount;
-
-            if(this.angle >= 360){
-                this.angle =0;
-            }
-            createMoon();
-            //Moon needs to have position the same as the earth each time.
+    /*
+     * Overrides orbit method to be useable by moons
+     */
+    @Override
+    public void orbit()
+    {   
+        //Increase cora by the planets orbit speed so that it keeps up with the planet orbiting the sun.
+        centreOfRotationAngle += plan.getOrbitSpeed();
+        //Then increase the angle of the moon to the earth.
+        tempAngle = this.getAngle() + orbitSpeed;
+        this.setAngle(tempAngle);
+        //Bounds of the angle.
+        if(tempAngle >= 360){
+            this.setAngle(0);
+        }
+        //Call to draw the moon to the screen.
+        createMoon();
     }
 }
