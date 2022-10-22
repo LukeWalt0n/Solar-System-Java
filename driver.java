@@ -1,72 +1,76 @@
-
-/*
- * A class which allows us to execute code from the solar system class.
- * Just a main class.
- */
-public class driver{
-
+public class driver {
+    
     public static void main(String args[]){
-        /*
-         * Task is to create a simple moving model of the solar system.
-         * Adding planets such as earth, the sun, etc and making them roate around the sun.
-         */
 
+        double acceleration = Double.parseDouble(args[0]);
+        //Create a solar system.
+        SolarSystem s = new SolarSystem(1000, 1000);
 
-         //Create a window:
-         SolarSystem s = new SolarSystem(1000, 1000);
+        //Create a sun.
+        s.drawSolarObject(0, 0, 75, "YELLOW");
 
-         //Draw a sun in the window:
-         
+        //Create earth and draw it to the screen.
+        Planet earth = new Planet(150, 0, 20, "BLUE", 2*acceleration, s);
+        earth.createPlanet();
 
-         planet mercury = new planet(s, 2, 150, 360, 20, "GREY");
-         mercury.createPlanet();
+        //Create a moon for earth.
+        Moon earthMoon = new Moon(earth, 25, 0, 5, "WHITE", 3*acceleration, s, 150, 0);
+        earthMoon.createMoon();
 
-         planet venus = new planet(s, 2, 170, 48, 25, "ORANGE");
-         venus.createPlanet();
-         //Draw the earth.
-         planet earth = new planet(s,  2, 200, 0, 30, "BLUE");
-         earth.createPlanet();
-         
-         planet mars = new planet(s,  2, 260 , 40, 40, "RED");
-         mars.createPlanet();
-        
-         planet jupiter = new planet(s, 2, 280, 60, 50, "YELLOW");
-         jupiter.createPlanet();
+        Stars strs = new Stars(200, s);
+        strs.drawStars();
 
-         planet saturn = new planet(s, 2, 340, 30, 60, "ORANGE");
-         saturn.createPlanet();
+        //Add appropriate planets to solar system
+       Planet mercury = new Planet(100, 20, 10, "GREY", 4*acceleration, s);
+       mercury.createPlanet();
 
-         planet uranus = new planet(s,  2, 380, 20, 20, "BLUE");
-         uranus.createPlanet();
+       Planet venus = new Planet(120, 67, 15, "ORANGE", 3*acceleration, s);
+       venus.createPlanet();
 
-         //Move amount is what we 
-         moon m = new moon(s, 3, 50, 0, 10, "WHITE", earth, 200, 0 );
-         m.createMoon();
+       Planet mars = new Planet(160, 90, 25, "RED", 2*acceleration, s);
+       mars.createPlanet();
 
-        stars starz = new stars(300, s);
-        starz.drawStars();
-         
+       Planet jupiter = new Planet(250, 0, 30, "#f7d577",0.5*acceleration, s);
+       jupiter.createPlanet();
 
+       Moon europa = new Moon(jupiter, 50, 0, 10, "WHITE", 3*acceleration, s, 250, 0);
+       europa.createMoon();
+
+       Planet saturnRing = new Planet(320, 80, 40, "#ceb8b8", 0.2*acceleration, s);
+       saturnRing.createPlanet();
+       Planet saturn = new Planet(320, 80, 30,"#c3a171",0.2*acceleration, s);
+       saturn.createPlanet();
+
+       Planet uranus = new Planet(360, 20, 35, "#d1e7e7", 0.2*acceleration, s );
+       uranus.createPlanet();
+
+       Planet neptune = new Planet(400, 280, 40, "#4b70dd", 0.1*acceleration, s);
+       neptune.createPlanet();
+       
+       Comet com = new Comet( 420, 180, 20, "ORANGE", 0.1 , s);
+        com.burnOut();
+       
+
+        //Orbit indefinietly.
         do{
             earth.orbit();
-            mars.orbit();
-            m.orbitMoon();
+            earthMoon.orbit();
+            strs.drawAsteroids();
+            //strs.drawStars();
             mercury.orbit();
             venus.orbit();
+            mars.orbit();
             jupiter.orbit();
-            uranus.orbit();
+            europa.orbit();
+            saturnRing.orbit();
             saturn.orbit();
+            uranus.orbit();
+            neptune.orbit();
+            com.burnOut();
+            //Re-draw the sun each time.
             s.drawSolarObject(0, 0, 100, "YELLOW");
+            //Call finished drawing to re-draw objects to the screen.
             s.finishedDrawing();
-            starz.drawStars();
         }while(true);
-
-        
-        
-
-
-         
-            
-        
     }
 }
