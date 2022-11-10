@@ -1,29 +1,43 @@
-/*
- * Class to represent a planet.
- * A planet is a circle on the screen which can orbit another object.
+
+/**
+ * A class which represents a planet.
+ * It inherits from the parent class CelestialObject.
+ * A planet is essentially a circle on the screen.
  */
 public  class Planet extends CelestialObject {
     
+
     private SolarSystem s;
     private double orbitSpeed;
     private double tempAngle;
 
+    /**
+     * Constructor for a planet.
+     * @param d distance from the sun.
+     * @param a angle to the sun.
+     * @param di diameter.
+     * @param c Colour.
+     * @param ma MoveAmount - how fast the planet should move.
+     * @param ss The solar system in which the planet resides.
+     */
     public Planet(double d, double a, double di, String c, double ma, SolarSystem ss){
         super(d, a, di, c);
         this.orbitSpeed = ma;
         this.s = ss;
     }
 
-    /*
-     * Method to return the orbit speed of the planet.
-     * This is so the moon class can use this value to match the speed of the planet when orbiting the sun.
+    
+    /**
+     * This method returns the orbit speed of the planet.
+     * @return this.orbitSpeed - the orbit speed of the planet.
      */
     public double getOrbitSpeed(){
         return this.orbitSpeed;
     }
     
-    /*
-     * Calls to solarSystem method to draw an object to the screen.
+    
+    /**
+     * Function to draw a planet to the screen.
      */
     public void createPlanet()
     {
@@ -32,9 +46,9 @@ public  class Planet extends CelestialObject {
     }
 
 
-    /*
-     * Override of celestialObject method 'orbit'
-     * In this case we just increase the planets angle to the sun on each call of this method.
+    /**
+     * Override of orbit method to make planet orbit around the sun.
+     * When the angle gets to 360, reset it.
      */
     @Override
     public void orbit()

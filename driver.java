@@ -10,24 +10,25 @@ public class driver {
         s.drawSolarObject(0, 0, 75, "YELLOW");
 
         //Create earth and draw it to the screen.
-        Planet earth = new Planet(150, 0, 20, "BLUE", 2*acceleration, s);
+        Planet earth = new Planet(150, 0, 20, "BLUE", 1*acceleration, s);
         earth.createPlanet();
 
         //Create a moon for earth.
-        Moon earthMoon = new Moon(earth, 25, 0, 5, "WHITE", 3*acceleration, s, 150, 0);
+        Moon earthMoon = new Moon(earth, 25, 0, 5, "WHITE", 1.2*acceleration, s, 150, 0);
         earthMoon.createMoon();
 
+        //Draws asteroids
         Stars strs = new Stars(200, s);
         strs.drawStars();
 
         //Add appropriate planets to solar system
-       Planet mercury = new Planet(100, 20, 10, "GREY", 4*acceleration, s);
+       Planet mercury = new Planet(100, 20, 10, "GREY", 2.1*acceleration, s);
        mercury.createPlanet();
 
-       Planet venus = new Planet(120, 67, 15, "ORANGE", 3*acceleration, s);
+       Planet venus = new Planet(120, 67, 15, "ORANGE", 2.4*acceleration, s);
        venus.createPlanet();
 
-       Planet mars = new Planet(160, 90, 25, "RED", 2*acceleration, s);
+       Planet mars = new Planet(160, 90, 25, "RED", 2.45*acceleration, s);
        mars.createPlanet();
 
        Planet jupiter = new Planet(250, 0, 30, "#f7d577",0.5*acceleration, s);
@@ -56,6 +57,7 @@ public class driver {
             earth.orbit();
             earthMoon.orbit();
             strs.drawAsteroids();
+            strs.drawStars();
             //strs.drawStars();
             mercury.orbit();
             venus.orbit();

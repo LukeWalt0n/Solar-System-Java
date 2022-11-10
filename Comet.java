@@ -1,13 +1,24 @@
 import java.util.Random;
-/*
- * Class which represents comets.
+
+/**
+ * Class to represent a comet.
+ * Inherits from Celestial object.
+ * 
  */
 public class Comet extends CelestialObject{
 
     private SolarSystem s;
     private double speed;
    
-
+    /**
+     * Constructor for a comet when a user provides a colour.
+     * @param d distance from sun.
+     * @param a angle to sun.
+     * @param di diameter.
+     * @param c colour of comet.
+     * @param ma speed of movement.
+     * @param ss Solar system it resides in.
+     */
     public Comet(double d, double a, double di, String c, double ma, SolarSystem ss){
         super(d, a, di, c);
        
@@ -16,9 +27,31 @@ public class Comet extends CelestialObject{
 
     }
 
+    /**
+     * Secondary constructor for a comet, for a case where a user may not know what colour to use.
+     * @param d distance from sun.
+     * @param a angle to sun.
+     * @param di diameter.
+     * @param ma speed of movement.
+     * @param ss Solar system it resides in.
+     */
+    public Comet(double d, double a, double di,double ma, SolarSystem ss){
+        //We provide a default colour of RED.
+        super(d, a, di, "RED");
+        this.s = ss;
+        this.speed = ma;
+    }
+
+    /**
+     * Function to draw a comet to a solar system.
+     */
     public void drawComet(){
         s.drawSolarObject(this.getDist(), this.getAngle(), this.getDiameter(), this.getColour());
     }
+
+    /**
+     * Function to make comet move across the screen and slowly become smaller or 'burn out'.
+     */
     public void burnOut(){
 
         //To make it fly across the screen we want to increase cora.

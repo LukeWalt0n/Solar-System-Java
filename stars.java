@@ -1,8 +1,8 @@
 import java.util.Random;
 
-/*
- * Class to represent stars.
- * Stars are drawn randomly to the screen.
+
+/**
+ * A class which represents stars and asteroids.
  */
 public class Stars {
 
@@ -11,32 +11,41 @@ public class Stars {
     //The solar system (window) the stars will reside in.
     private SolarSystem s;
 
+
+    /**
+     * 
+     * @param a the amount of stars/asteroids.
+     * @param ss the solar system to draw them in.
+     */
     public Stars(int a, SolarSystem ss){
         this.amount = a;
         this.s = ss;
 
     }
 
-    /*
-     * Method to draw the stars to the screen.
-     * Uses a for loop to draw 'x' amount of stars giving them a random angle and distance each time.
-     * Edited to be asteroids
+     
+    /**
+     * Method to draw asteroid belt using stars.
+     * Draws them in a circle around the sun at different angles with different sizes.
      */
     public void drawAsteroids(){
         Random r = new Random();
         
         for(int i =0; i < this.amount; i++){
-            this.s.drawSolarObject(r.nextInt(180, 200), r.nextInt(360),r.nextInt(1,2), "WHITE");
+            this.s.drawSolarObject(r.nextInt(180, 200), r.nextInt(360),r.nextInt(1,5), "WHITE");
         }
        
            
     }
 
+    /**
+     * Method to draw stars on the screen at random locations.
+     */
     public void drawStars(){
         Random r = new Random();
         
         for(int i =0; i < this.amount; i++){
-            this.s.drawSolarObject(r.nextInt(600), r.nextInt(360),r.nextInt(2,3), "WHITE");
+            this.s.drawSolarObject(r.nextInt(500), r.nextInt(360),r.nextInt(1,2), "WHITE");
         }
        
            

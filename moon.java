@@ -1,13 +1,14 @@
 
-/*
- * A class which represents a moon orbiting a planet.
- * 
- */
 
+/**
+ * A class to represent a moon.
+ * A moon is a circle on the screen which orbits a planet, while orbiting the sun.
+ */
 public class Moon extends CelestialObject {
 
-    /*
-     * We use centre of rotation angle and distance to make the moon orbit the earth.
+    
+    /**
+     * Instance variables needed for a moon.
      */
     private SolarSystem s;
     private double orbitSpeed;
@@ -17,6 +18,18 @@ public class Moon extends CelestialObject {
     private Planet plan;
 
 
+    /**
+     * Constructor for a moon.
+     * @param p the planet which the moon orbits.
+     * @param d the distance of the moon from the planet.
+     * @param a the angle of the moon to the planet.
+     * @param di the diameter of the moon.
+     * @param c the colour of the moon.
+     * @param ma the speed at which the moon orbits.
+     * @param ss the solar system the moon resides in.
+     * @param cord the distance between the sun and the moon
+     * @param cora the angle of the moon to the sun.
+     */
     public Moon(Planet p, double d, double a, double di, String c, double ma, SolarSystem ss, double cord, double cora){
         //Call to parent class celestialObject.
         super(d, a, di, c);
@@ -27,14 +40,18 @@ public class Moon extends CelestialObject {
         this.plan = p;
     }
 
+    /**
+     * Function to draw the moon to the screen.
+     */
     public void createMoon(){
         //Calls solar system method to draw a moon about a planet.
         this.s.drawSolarObjectAbout(this.getDist(), this.getAngle(), 
             this.getDiameter(), this.getColour(), this.centreOfRotationDist, this.centreOfRotationAngle );
     }
 
-    /*
-     * Overrides orbit method to be useable by moons
+    
+    /**
+     * Override method to allow the moon to orbit its planet.
      */
     @Override
     public void orbit()
