@@ -48,7 +48,7 @@ public class driver {
        Planet neptune = new Planet(400, 280, 40, "#4b70dd", 0.1*acceleration, s);
        neptune.createPlanet();
        
-       Comet com = new Comet( 420, 180, 20, "ORANGE", 0.1 , s);
+       Comet com = new Comet( 420, 180, 20, "ORANGE", 1 , s);
         com.burnOut();
        
 
